@@ -12,6 +12,10 @@ from autogen.agentchat.contrib.gpt_assistant_agent import GPTAssistantAgent
 from autogen import UserProxyAgent
 import autogen
 
+#to do - finish setting up agents - on the last one 
+#append agents to the group chat definitions
+#create airtable stuff
+
 
 load_dotenv()
 brwoserless_api_key = os.getenv("BROWSERLESS_API_KEY")
@@ -26,6 +30,7 @@ config_list = config_list_from_json("OAI_CONFIG_LIST")
 def google_search(search_keyword):    
     url = "https://google.serper.dev/search"
 
+   
     payload = json.dumps({
         "q": search_keyword
     })
@@ -151,7 +156,7 @@ researcher = GPTAssistantAgent(
     name = "researcher",
     llm_config = {
         "config_list": config_list,
-        "assistant_id": "asst_qyvioid5My8K3SdFClaEnwmB"
+        "assistant_id": "asst_jH16YXE35xN4ntqG4v1GimUa"
     }
 )
 
@@ -167,7 +172,7 @@ research_manager = GPTAssistantAgent(
     name="research_manager",
     llm_config = {
         "config_list": config_list,
-        "assistant_id": "asst_C1Ta5XmmEcYD6vnOSVflnwG9"
+        "assistant_id": "asst_7rKold2LtusLocV6ar3mvP3j"
     }
 )
 
@@ -177,7 +182,7 @@ director = GPTAssistantAgent(
     name = "director",
     llm_config = {
         "config_list": config_list,
-        "assistant_id": "asst_zVBJGch5mOyCYl9H1J3L9Ime",
+        "assistant_id": "asst_TXDomdxmCGutKv8YtpsjT22A",
     }
 )
 
@@ -196,6 +201,6 @@ group_chat_manager = autogen.GroupChatManager(groupchat=groupchat, llm_config={"
 
 # ------------------ start conversation ------------------ #
 message = """
-Research the funding stage/amount & pricing for each company in the list: https://airtable.com/appj0J4gFpvLrQWjI/tblF4OmG6oLjYtgZl/viwmFx2ttAVrJm0E3?blocks=hide
+Research the Funding-Stage/amount & Pricing for each company in the list: https://airtable.com/appf4Nxb4yQtJtB4B/tblU0BdK5UDRdanR8/viwh4ZRwz10r0h8Os
 """
 user_proxy.initiate_chat(group_chat_manager, message=message)

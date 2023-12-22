@@ -1,0 +1,6 @@
+langchain
+requests
+bs4
+autogen
+openai
+openlayer
